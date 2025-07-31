@@ -1,96 +1,548 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesa - Fullstack Mage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Khand:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+        CSS MASTER'S CORE SETUP
+        ========================================
+        - Variable-driven design
+        - Mobile-first approach
+        - Brutalist Comic aesthetics
+        */
+
+        :root {
+            --primary-color: #ff3d3d; /* Merah ngejreng */
+            --secondary-color: #3d3dff; /* Biru asik */
+            --accent-color: #ffef00; /* Kuning stabilo */
+            --panel-color: #ffffff; /* Putih bersih */
+            --text-color: #000000; /* Hitam pekat */
+            --shadow-color: #000000; /* Bayangan no blur */
+            --bg-color: #f0f0f0; /* Background biar ga silau */
+
+            --font-heading: 'Bangers', cursive;
+            --font-body: 'Khand', sans-serif;
+
+            --shadow-hard: 0.25rem 0.25rem 0 var(--shadow-color);
+            --shadow-hard-lg: 0.5rem 0.5rem 0 var(--shadow-color);
+            --border-thick: 3px solid var(--text-color);
+        }
+
+        /* Global Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Halftone background effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0.5;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            color: var(--primary-color);
+            -webkit-text-stroke: 1.5px var(--text-color);
+            text-shadow: 3px 3px 0 var(--accent-color);
+            transform: rotate(-1deg);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            transform: rotate(-2deg);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            max-width: 60ch;
+        }
+        
+        /*
+        ========================================
+        COMIC BRUTAL BUTTON - THE STAR
+        ========================================
+        */
+        .comic-brutal-button {
+            position: relative;
+            font-size: 1.25em;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+            display: inline-block;
+            transform: rotate(-2deg);
+            transform-origin: center;
+            transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+            text-decoration: none;
+        }
+
+        .comic-brutal-button .button-inner {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 0.8em 1.5em;
+            z-index: 2;
+            transform: skew(-4deg, 1deg);
+            transition: all 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+            border: var(--border-thick);
+        }
+
+        .comic-brutal-button .button-text {
+            font-family: var(--font-heading);
+            font-weight: 400; /* Bangers cuma punya 1 weight */
+            font-size: 1.2em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 5;
+            color: var(--panel-color);
+            -webkit-text-stroke: 1px var(--text-color);
+        }
+
+        .comic-brutal-button .button-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--shadow-color);
+            z-index: 0;
+            transform: translate(0.4em, 0.4em);
+            transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        
+        /* HOVER & ACTIVE STATES */
+        .comic-brutal-button:hover {
+            transform: rotate(-1deg) scale(1.05);
+        }
+        .comic-brutal-button:hover .button-inner {
+            transform: skew(-6deg, 2deg);
+            background-color: var(--secondary-color);
+        }
+        .comic-brutal-button:hover .button-shadow {
+            transform: translate(0.6em, 0.6em);
+        }
+        .comic-brutal-button:active {
+            transform: rotate(0) scale(0.98);
+        }
+        .comic-brutal-button:active .button-shadow {
+            transform: translate(0.2em, 0.2em);
+        }
+
+
+        /*
+        ========================================
+        PAGE SECTIONS STYLING
+        ========================================
+        */
+
+        /* HEADER / NAVBAR */
+        .navbar {
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(255, 239, 0, 0.85); /* Accent color with transparency */
+            backdrop-filter: blur(5px);
+            border-bottom: var(--border-thick);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            -webkit-text-stroke: 1.5px var(--text-color);
+            transform: rotate(-2deg);
+        }
+        .nav-links {
+            display: none; /* Mobile first, hide links */
+            list-style: none;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            padding: 0.2rem 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--panel-color);
+            transform: rotate(-2deg);
+            display: inline-block;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 150px; /* space for navbar */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .hero .intro-text {
+            transform: rotate(1deg);
+        }
+        .hero .highlight {
+            background-color: var(--accent-color);
+            padding: 0 0.5rem;
+            display: inline;
+            transform: skew(-5deg);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        /* PROJECTS SECTION */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        .project-card {
+            background-color: var(--panel-color);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 1.5rem;
+            transform: rotate(1deg);
+            transition: all 0.2s ease-out;
+            opacity: 0;
+            transform: translateY(50px) rotate(3deg);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(1deg);
+        }
+        .project-card:hover {
+            transform: rotate(-1deg) scale(1.02);
+            box-shadow: 0.7rem 0.7rem 0 var(--secondary-color);
+        }
+        .project-card .card-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            border: var(--border-thick);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: #aaa;
+        }
+        .project-card h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            -webkit-text-stroke: 1px var(--text-color);
+        }
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .project-card .tech-tag {
+            background-color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid var(--text-color);
+            box-shadow: 2px 2px 0 var(--text-color);
+        }
+
+        /* SKILLS SECTION */
+        .skills-container {
+            background-color: var(--primary-color);
+            padding: 3rem 1.5rem;
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-lg);
+            transform: rotate(-1.5deg);
+        }
+        .skills-container h2 {
+            color: var(--accent-color);
+            -webkit-text-stroke: 2px var(--text-color);
+            text-shadow: none;
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            transform: rotate(1.5deg);
+        }
+        .skill-item {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.2rem;
+            background-color: var(--panel-color);
+            padding: 0.8rem 1.5rem;
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transform: rotate(2deg) skew(-5deg);
+            transition: all 0.2s ease;
+        }
+        .skill-item:hover {
+            background-color: var(--accent-color);
+            transform: rotate(0) skew(0) scale(1.1);
+        }
+        
+        /* CONTACT SECTION */
+        #contact {
+            text-align: center;
+        }
+        #contact p {
+            margin: 0 auto 2rem auto;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--text-color);
+            color: var(--panel-color);
+            text-align: center;
+            padding: 2rem 1rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            margin-top: 4rem;
+        }
+        footer span {
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+
+
+        /*
+        ========================================
+        RESPONSIVE DESIGN - DESKTOP & TABLET
+        ========================================
+        */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .hero {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2rem;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#hero" class="nav-logo">Hesa!</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">My Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="about" class="hero container">
+            <div class="intro-text">
+                <h1>ALLOO GUYSS, GW <span class="highlight">HESA!</span></h1>
+                <p>
+                    Seorang Fullstack Mage yang demen banget ngulik kode sampe pagi.
+                    Vibes gw itu mengubah ide-ide random jadi aplikasi web yang auto keren dan gak ngebosenin.
+                    Pokoknya, kalo ada yang aneh tapi seru, itu pasti kerjaan gw.
+                </p>
+                <a href="#projects" class="comic-brutal-button">
+                    <div class="button-inner">
+                        <span class="button-text">KEPOIN PROJECT GW!</span>
+                    </div>
+                    <div class="button-shadow"></div>
+                </a>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <h2>PROJECTS YG UDAH GW JAJAH 💣</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="card-image">IMAGE HERE</div>
+                    <h3>Web E-Commerce "Cuan Dulu"</h3>
+                    <p>Bikin web ini biar pada bisa jajan online 24/7. Tampilannya sengaja dibuat rame biar user betah scroll sampe checkout. Auto cuan, bosq!</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">SCSS</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-image">IMAGE HERE</div>
+                    <h3>Platform Musik "Distorsi Batin"</h3>
+                    <p>Tempat buat dengerin musik-musik underground yang ga bakal lo temuin di tempat lain. Player-nya bisa di-custom, fiturnya anti-mainstream.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">TailwindCSS</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-image">IMAGE HERE</div>
+                    <h3>Game Web "Gabut Invaders"</h3>
+                    <p>Iseng pas lagi gabut, eh malah jadi game. Tembak-tembakan alien pake style pixel art. Simpel, tapi nagih banget, awas lupa waktu!</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5 Canvas</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <div class="skills-container">
+                <h2>SKILLSET GW, NO DEBAT! 😤</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">JavaScript (ESNext)</div>
+                    <div class="skill-item">HTML5 & CSS3</div>
+                    <div class="skill-item">React.js</div>
+                    <div class="skill-item">Node.js & Express</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">SQL & NoSQL</div>
+                    <div class="skill-item">Git & GitHub</div>
+                    <div class="skill-item">Figma</div>
+                    <div class="skill-item">API Integration</div>
+                    <div class="skill-item">Problem Solving</div>
+                    <div class="skill-item">UI/UX GOKIL</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2>YOK NONGKI & KOLAB! 🤙</h2>
+            <p>
+                Punya ide gokil? Atau cuma mau nanya "Hesa, lagi ngapain?".
+                Gaskeun, jangan malu-malu kucing. Spill idemu, siapa tau kita bisa bikin sesuatu yang MANTUL!
+            </p>
+            <a href="mailto:hesa.keren@email.com" class="comic-brutal-button">
+                <div class="button-inner">
+                    <span class="button-text">SEND EMAIL!</span>
+                </div>
+                <div class="button-shadow"></div>
+            </a>
+        </section>
+
+    </main>
+    
+    <footer>
+        <p>Dibuat pake cinta & kopi item <span>☕️</span> © 2025 Hesa Keren Banget.</p>
+    </footer>
+
+    <script>
+    /*
+    ========================================
+    JAVASCRIPT FOR UI INTERACTION
+    - Simple Scroll Reveal Animation
+    - No heavy logic, just for presentation
+    ========================================
+    */
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after it becomes visible so it doesn't re-trigger
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        // Observe all project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            observer.observe(card);
+        });
+
+    });
+
+    </script>
+</body>
 </html>
